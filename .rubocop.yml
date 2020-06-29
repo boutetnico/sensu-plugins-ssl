@@ -31,3 +31,6 @@ Style/Documentation:
 
 # AllCops:
 #   TargetRubyVersion: 2.0
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
