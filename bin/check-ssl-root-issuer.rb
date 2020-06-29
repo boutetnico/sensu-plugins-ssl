@@ -62,7 +62,7 @@ class CheckSSLRootIssuer < Sensu::Plugin::Check::CLI
          short: '-f',
          long: '--format FORMAT_VAL',
          default: 'RFC2253',
-         in: %w['RFC2253', 'ONELINE', 'COMPAT'],
+         in: %w[RFC2253 ONELINE COMPAT],
          required: false
 
   def cert_name_format

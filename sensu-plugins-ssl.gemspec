@@ -1,4 +1,4 @@
-lib = File.expand_path('../lib', __FILE__)
+lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 require 'date'
@@ -41,6 +41,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'redcarpet',                 '~> 3.5'
   s.add_development_dependency 'rspec',                     '~> 3.9'
   s.add_development_dependency 'rubocop',                   '~> 0.85.0'
-  s.add_development_dependency 'yard',                      '~> 0.9.25'
   s.add_development_dependency 'timecop',                   '~> 0.9.1'
+  s.add_development_dependency 'yard',                      '~> 0.9.25'
 end

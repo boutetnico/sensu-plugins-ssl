@@ -2,7 +2,7 @@ require_relative '../bin/check-java-keystore-cert.rb'
 
 require 'timecop'
 
-describe CheckJavaKeystoreCert do
+describe CheckJavaKeystoreCert do # rubocop:disable Metrics/BlockLength
   before(:all) do
     # Ensure the check isn't run when exiting (which is the default)
     CheckJavaKeystoreCert.class_variable_set(:@@autorun, nil)
