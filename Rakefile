@@ -8,12 +8,10 @@ require 'yard/rake/yardoc_task'
 
 ENV['TZ'] = 'CET'
 
-args = [:spec, :make_bin_executable, :yard, :rubocop, :check_binstubs]
-
 YARD::Rake::YardocTask.new do |t|
-  OTHER_PATHS = %w().freeze
+  OTHER_PATHS = %w[].freeze
   t.files = ['lib/**/*.rb', 'bin/**/*.rb', OTHER_PATHS]
-  t.options = %w(--markup-provider=redcarpet --markup=markdown --main=README.md --files CHANGELOG.md)
+  t.options = %w[--markup-provider=redcarpet --markup=markdown --main=README.md --files CHANGELOG.md]
 end
 
 RuboCop::RakeTask.new
@@ -31,7 +29,7 @@ desc 'Test for binstubs'
 task :check_binstubs do
   bin_list = Gem::Specification.load('sensu-plugins-ssl.gemspec').executables
   bin_list.each do |b|
-    `which #{ b }`
+    `which #{b}`
     unless $CHILD_STATUS.success?
       puts "#{b} was not a binstub"
       exit
@@ -39,4 +37,4 @@ task :check_binstubs do
   end
 end
 
-task default: args
+task default: %i[spec make_bin_executable yard rubocop check_binstubs]

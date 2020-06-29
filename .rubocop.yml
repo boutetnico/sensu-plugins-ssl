@@ -29,5 +29,14 @@ RegexpLiteral:
 Style/Documentation:
   Enabled: false
 
-# AllCops:
-#   TargetRubyVersion: 2.0
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Security/Open:
+  Enabled: false
+
+Layout/HashAlignment:
+  Enabled: false
+
+Style/EvalWithLocation:
+  Enabled: false
