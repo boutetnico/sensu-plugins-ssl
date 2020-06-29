@@ -37,3 +37,6 @@ Security/Open:
 
 Layout/HashAlignment:
   Enabled: false
+
+Style/EvalWithLocation:
+  Enabled: false

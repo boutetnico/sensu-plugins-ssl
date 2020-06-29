@@ -68,8 +68,7 @@ class CheckSSLHSTSStatus < Sensu::Plugin::Check::CLI
     response = Net::HTTP.get_response(uri)
 
     case response
-    when Net::HTTPSuccess then
-      response
+    when Net::HTTPSuccess then response
     when Net::HTTPRedirection then
       location = URI(response['location'])
       fetch(location, limit - 1)
@@ -83,6 +82,7 @@ class CheckSSLHSTSStatus < Sensu::Plugin::Check::CLI
     if response.nil?
       return warning 'Bad response recieved from API'
     end
+
     body = JSON.parse(response.body)
     unless STATUSES.include? body['status']
       warning 'Invalid status returned ' + body['status']

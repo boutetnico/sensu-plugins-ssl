@@ -91,7 +91,7 @@ class CheckSSLRootIssuer < Sensu::Plugin::Check::CLI
     http.verify_mode = OpenSSL::SSL::VERIFY_PEER
 
     http.verify_callback = lambda { |verify_ok, store_context|
-      root_cert = store_context.current_cert unless root_cert
+      root_cert ||= store_context.current_cert
       unless verify_ok
         @failed_cert = store_context.current_cert
         @failed_cert_reason = [store_context.error, store_context.error_string] if store_context.error != 0

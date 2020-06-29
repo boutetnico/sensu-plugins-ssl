@@ -138,7 +138,7 @@ class CheckSSLQualys < Sensu::Plugin::Check::CLI
              end
       return json if json['status'] == 'READY'
 
-      if json['endpoints'] && json['endpoints'].is_a?(Array)
+      if json['endpoints']&.is_a?(Array)
         p "endpoints: #{json['endpoints']}" if config[:debug]
         # The api response sometimes has low eta (which seems unrealistic) from
         # my tests that can be 0 or low numbers which would imply it is done...
