@@ -117,7 +117,7 @@ class CheckSSLCert < Sensu::Plugin::Check::CLI
 
     days_until = (Date.parse(expiry.to_s) - Date.today).to_i
 
-    if days_until < 0
+    if days_until.negative?
       critical "Expired #{days_until.abs} days ago"
     elsif days_until < config[:critical].to_i
       critical "#{days_until} days left"

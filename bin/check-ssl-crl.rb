@@ -68,7 +68,7 @@ class CheckSSLCRL < Sensu::Plugin::Check::CLI
     next_update = OpenSSL::X509::CRL.new(open(config[:url]).read).next_update
     minutes_until = seconds_to_minutes(Time.parse(next_update.to_s) - Time.now)
 
-    critical "#{config[:url]} - Expired #{minutes_until.abs} minutes ago" if minutes_until < 0
+    critical "#{config[:url]} - Expired #{minutes_until.abs} minutes ago" if minutes_until.negative?
     critical "#{config[:url]} - #{minutes_until} minutes left, next update at #{next_update}" if minutes_until < config[:critical].to_i
     warning "#{config[:url]} - #{minutes_until} minutes left, next update at #{next_update}" if minutes_until < config[:warning].to_i
     ok "#{config[:url]} - #{minutes_until} minutes left, next update at #{next_update}"
